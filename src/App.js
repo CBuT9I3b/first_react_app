@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import News from './components/News';
 
 class App extends Component {
   render() {
     return (
       <div className="container">
         <header>Header</header>
-        <div>Все остальное нужно еще придумать.</div>
+        <News />
         <footer>Footer</footer>
       </div>
     );
