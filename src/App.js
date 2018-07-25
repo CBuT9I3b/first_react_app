@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import News from './components/News';
+import ListNews from './components/ListNews';
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <header>Header</header>
-        <News />
-        <footer>Footer</footer>
+        <header>React Hacker News</header>
+        <ListNews />
+        <footer>By Mike</footer>
       </div>
-    );
+    )
   }
 }
 

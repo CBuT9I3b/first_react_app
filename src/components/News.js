@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
-import space from './request/hackerNews';
+import React from 'react';
 
-class News extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: 'News'
-        };
-    }
-
-    addData() {
-        space.then(response => {
-            console.log(response.data)
-            this.setState({data: response.data.title})
-        })
-    }
-
-    componentDidMount() {
-        this.addData()
-    }
-
-    render() {
+const News = ({data}) => {
+    const items = data
+    const itemsNews = items.map((item, index) => {
         return (
-            <div>{this.state.data}</div>
+            <div key={index}>
+            {item}
+            </div>
         )
-    }
+    })
+    
+    console.log("render")
+    
+    return (
+        <div>{itemsNews}</div>
+    )
 }
 
 export default News;

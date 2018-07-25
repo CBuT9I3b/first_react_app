@@ -1,5 +1,8 @@
-import Axios from "axios";
+import axios from "axios";
 
-const space = Axios.get('https://hacker-news.firebaseio.com/v0/item/17591816.json');
+const hacker = {
+    new: () => axios.get('https://hacker-news.firebaseio.com/v0/newstories.json'),
+    story: (id) => axios.get('https://hacker-news.firebaseio.com/v0/item/' + id + '.json')
+}
 
-export default space;
+export default hacker;
