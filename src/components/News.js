@@ -1,20 +1,23 @@
 import React from 'react';
 
 const News = ({data}) => {
-    const items = data
-    const itemsNews = items.map((item, index) => {
-        return (
-            <div key={index}>
-            {item}
-            </div>
-        )
-    })
-    
-    console.log("render")
-    
+  const itemsNews = data.map((item, index) => {
     return (
-        <div>{itemsNews}</div>
+      <div key={index}>
+        <div>Title: {item.title}</div>
+        <div>
+          <a href={item.url}>URL</a>
+        </div>
+        <div>Author: {item.by}</div>
+      </div>
     )
+  })
+
+  console.log('render')
+
+  return (
+    <div>{itemsNews}</div>
+  )
 }
 
 export default News;

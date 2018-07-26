@@ -3,45 +3,45 @@ import hacker from './request/hackerNews';
 import News from './News';
 
 class ListNews extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: []
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: []
     }
+  }
 
-    addDate() {
-        var itemsTitle = []
+  addDate() {
+    var itemsList = []
 
-        hacker.new()
+    hacker.new()
+    .then(response => {
+      response.data.slice(0, 10).forEach(id => {
+        hacker.story(id)
         .then(response => {
-            response.data.forEach(id => {
-                hacker.story(id)
-                .then(response => {
-                    itemsTitle.push(response.data.title)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-                .then(() => {
-                    this.setState({items: itemsTitle})
-                })
-            })
+          itemsList.push(response.data)
         })
-    }
+        .catch(error => {
+          console.log(error)
+        })
+        .then(() => {
+          this.setState({items: itemsList})
+        })
+      })
+    })
+  }
 
-    componentWillMount() {
-        this.addDate()
-    }
+  componentWillMount() {
+    this.addDate()
+  }
 
-    render() {
-        return (
-            <div>
-            <div>List News</div>
-            <News data={this.state.items} />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div>List News</div>
+        <News data={this.state.items} />
+      </div>
+    )
+  }
 }
 
 export default ListNews;
