@@ -1,7 +1,7 @@
 import React from 'react';
 
 const News = ({data}) => {
-  const itemsNews = data.map((item, index) => {
+  const itemsList = data.map((item, index) => {
     return (
       <div key={index}>
         <div>Title: {item.title}</div>
@@ -13,10 +13,10 @@ const News = ({data}) => {
     )
   })
 
-  console.log('render')
+  console.log('render news')
 
   return (
-    <div>{itemsNews}</div>
+    <div>{itemsList}</div>
   )
 }
 

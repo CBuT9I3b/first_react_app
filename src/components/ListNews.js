@@ -6,14 +6,15 @@ class ListNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filter: 'new',
       items: []
     }
   }
 
-  addDate() {
+  fetchNews(filter) {
     var itemsList = []
 
-    hacker.new()
+    hacker.listStory(filter)
     .then(response => {
       response.data.slice(0, 10).forEach(id => {
         hacker.story(id)
@@ -30,14 +31,27 @@ class ListNews extends Component {
     })
   }
 
-  componentWillMount() {
-    this.addDate()
+  checkedFilter = (event) => {
+    this.setState({filter: event.target.value})
+  }
+
+  componentDidMount() {
+    this.fetchNews(this.state.filter)
   }
 
   render() {
+    console.log('render list')
+
     return (
       <div>
-        <div>List News</div>
+        <div>
+          List
+          <select defaultValue={this.state.filter} onChange={this.checkedFilter}>
+            <option value='top'>Top</option>
+            <option value='best'>Best</option>
+            <option value='new'>New</option>
+          </select>
+        </div>
         <News data={this.state.items} />
       </div>
     )
