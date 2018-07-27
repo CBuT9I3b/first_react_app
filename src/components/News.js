@@ -13,8 +13,6 @@ const News = ({data}) => {
     )
   })
 
-  console.log('render news')
-
   return (
     <div>{itemsList}</div>
   )

@@ -39,9 +39,13 @@ class ListNews extends Component {
     this.fetchNews(this.state.filter)
   }
 
-  render() {
-    console.log('render list')
+  componentDidUpdate(_, prevState) {
+    if (this.state.filter !== prevState.filter) {
+      this.fetchNews(this.state.filter)
+    }
+  }
 
+  render() {
     return (
       <div>
         <div>
