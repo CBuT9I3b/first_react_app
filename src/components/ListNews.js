@@ -6,13 +6,13 @@ class ListNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: 'new',
+      filter: 'top',
       items: []
-    }
+    };
   }
 
   fetchNews(filter) {
-    var itemsList = []
+    const itemsList = [];
 
     hacker.listStory(filter)
     .then(response => {
@@ -33,7 +33,7 @@ class ListNews extends Component {
 
   checkedFilter = (event) => {
     this.setState({filter: event.target.value})
-  }
+  };
 
   componentDidMount() {
     this.fetchNews(this.state.filter)
@@ -48,7 +48,7 @@ class ListNews extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className='mb-2'>
           List
           <select defaultValue={this.state.filter} onChange={this.checkedFilter}>
             <option value='top'>Top</option>

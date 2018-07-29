@@ -6,9 +6,11 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <header>React Hacker News</header>
+        <header>
+          <h1>React Hacker News <span class="badge badge-info">By Mike</span></h1>
+        </header>
         <ListNews />
-        <footer>By Mike</footer>
+        <footer></footer>
       </div>
     )
   }
