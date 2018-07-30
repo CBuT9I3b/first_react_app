@@ -7,16 +7,17 @@ class ListNews extends Component {
     super(props);
     this.state = {
       filter: 'top',
+      quantity: 5,
       items: []
     };
   }
 
-  fetchNews(filter) {
+  fetchNews(filter, quantity) {
     const itemsList = [];
 
     hacker.listStory(filter)
     .then(response => {
-      response.data.slice(0, 5).forEach(id => {
+      response.data.slice(0, quantity).forEach(id => {
         hacker.story(id)
         .then(response => {
           itemsList.push(response.data)
@@ -35,13 +36,17 @@ class ListNews extends Component {
     this.setState({filter: event.target.value})
   };
 
+  checkedQuantity = (event) => {
+    this.setState({quantity: event.target.value})
+  }
+
   componentDidMount() {
-    this.fetchNews(this.state.filter)
+    this.fetchNews(this.state.filter, this.state.quantity)
   }
 
   componentDidUpdate(_, prevState) {
-    if (this.state.filter !== prevState.filter) {
-      this.fetchNews(this.state.filter)
+    if ((this.state.filter !== prevState.filter) || (this.state.quantity !== prevState.quantity)) {
+      this.fetchNews(this.state.filter, this.state.quantity)
     }
   }
 
@@ -55,6 +60,14 @@ class ListNews extends Component {
               <option value='top'>Top news</option>
               <option value='best'>Best news</option>
               <option value='new'>New news</option>
+            </select>
+          </div>
+          <label className='col-1 col-form-label'>Quantity</label>
+          <div className='col-2'>
+            <select className='form-control' defaultValue={this.state.quantity} onChange={this.checkedQuantity}>
+              <option value='5'>5</option>
+              <option value='10'>10</option>
+              <option value='50'>50</option>
             </select>
           </div>
         </div>
