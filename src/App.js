@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>React Hacker News <span class="badge badge-info">By Mike</span></h1>
+          <h1>React Hacker News <span className="badge badge-info">By Mike</span></h1>
         </header>
         <ListNews />
         <footer></footer>
