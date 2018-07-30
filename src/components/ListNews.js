@@ -54,16 +54,16 @@ class ListNews extends Component {
     return (
       <div>
         <div className='form-group row mb-2'>
-          <label className='col-1 col-form-label'>List</label>
-          <div className='col-2'>
+          <label className='col-md-auto col-form-label'>List</label>
+          <div className='col-md-auto'>
             <select className='form-control' defaultValue={this.state.filter} onChange={this.checkedFilter}>
               <option value='top'>Top news</option>
               <option value='best'>Best news</option>
               <option value='new'>New news</option>
             </select>
           </div>
-          <label className='col-1 col-form-label'>Quantity</label>
-          <div className='col-2'>
+          <label className='col-md-auto col-form-label'>Quantity news on page</label>
+          <div className='col-md-auto'>
             <select className='form-control' defaultValue={this.state.quantity} onChange={this.checkedQuantity}>
               <option value='5'>5</option>
               <option value='10'>10</option>
