@@ -3,7 +3,7 @@ import React from 'react';
 const News = ({data}) => {
   const itemsList = data.map((item, index) => {
     return (
-      <div className='card border-info' key={index}>
+      <div className='card border-info mb-2' key={index}>
         <div className='card-body'>
           <h5 className='card-title'>{item.title}</h5>
           <div>
@@ -15,7 +15,7 @@ const News = ({data}) => {
   });
 
   return (
-    <div className='card-columns'>{itemsList}</div>
+    <div>{itemsList}</div>
   )
 };
 
