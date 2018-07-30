@@ -16,7 +16,7 @@ class ListNews extends Component {
 
     hacker.listStory(filter)
     .then(response => {
-      response.data.slice(0, 10).forEach(id => {
+      response.data.slice(0, 5).forEach(id => {
         hacker.story(id)
         .then(response => {
           itemsList.push(response.data)
@@ -48,13 +48,15 @@ class ListNews extends Component {
   render() {
     return (
       <div>
-        <div className='mb-2'>
-          List
-          <select defaultValue={this.state.filter} onChange={this.checkedFilter}>
-            <option value='top'>Top</option>
-            <option value='best'>Best</option>
-            <option value='new'>New</option>
-          </select>
+        <div className='form-group row mb-2'>
+          <label className='col-1 col-form-label'>List</label>
+          <div className='col-2'>
+            <select className='form-control' defaultValue={this.state.filter} onChange={this.checkedFilter}>
+              <option value='top'>Top news</option>
+              <option value='best'>Best news</option>
+              <option value='new'>New news</option>
+            </select>
+          </div>
         </div>
         <News data={this.state.items} />
       </div>
