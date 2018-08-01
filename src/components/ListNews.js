@@ -14,21 +14,9 @@ class ListNews extends Component {
 
   fetchNews(filter, quantity) {
     const itemsList = [];
-
-    hacker.listStory(filter)
-    .then(response => {
-      response.data.slice(0, quantity).forEach(id => {
-        hacker.story(id)
-        .then(response => {
-          itemsList.push(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-        .then(() => {
-          this.setState({items: itemsList})
-        })
-      })
+    hacker.newListStory(filter, itemsList, quantity)
+    .then((itemsList) => {
+      this.setState({items: itemsList})
     })
   }
 
