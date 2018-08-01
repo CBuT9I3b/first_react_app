@@ -7,19 +7,13 @@ const hacker = {
   listStory: (filter) => {
     return axios.get('https://hacker-news.firebaseio.com/v0/' + filter + 'stories.json')
   },
-  newListStory: (filter, result, quantity) => {
+  newListStory: (filter, quantity) => {
     return hacker.listStory(filter)
     .then(response => {
       return Promise.all(response.data.splice(0, quantity).map((id) => {
         return hacker.story(id)
-        .then(response => {
-          return response.data
-        })
+        .then(response => response.data)
       }))
-    })
-    .then(response => {
-      result = response
-      return result
     })
   }
 };
