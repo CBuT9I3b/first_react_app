@@ -13,29 +13,29 @@ class ListNews extends Component {
   }
 
   fetchNews(filter, quantity) {
-    const itemsList = [];
+    // const itemsList = [];
 
-    hacker.newListStory(filter, itemsList, quantity)
-    .then(() => {
-      this.setState({items: itemsList})
-    })
-
-    // hacker.listStory(filter)
-    // .then(response => {
-    //   const itemsList = []
-    //   response.data.slice(0, quantity).forEach(id => {
-    //     hacker.story(id)
-    //     .then(response => {
-    //       itemsList.push(response.data)
-    //     })
-    //     .catch(error => {
-    //       console.log(error)
-    //     })
-    //     .then(() => {
-    //       this.setState({items: itemsList})
-    //     })
-    //   })
+    // hacker.newListStory(filter, itemsList, quantity)
+    // .then(() => {
+    //   this.setState({items: itemsList})
     // })
+
+    hacker.listStory(filter)
+    .then(response => {
+      const itemsList = []
+      response.data.slice(0, quantity).forEach(id => {
+        hacker.story(id)
+        .then(response => {
+          itemsList.push(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        .then(() => {
+          this.setState({items: itemsList})
+        })
+      })
+    })
   }
 
   checkedFilter = (event) => {
