@@ -13,11 +13,8 @@ class ListNews extends Component {
   }
 
   fetchNews(filter, quantity) {
-    const itemsList = [];
-    hacker.newListStory(filter, itemsList, quantity)
-    .then((itemsList) => {
-      this.setState({items: itemsList})
-    })
+    hacker.newListStory(filter, quantity)
+    .then(response => this.setState({items: response}))
   }
 
   checkedFilter = (event) => {
