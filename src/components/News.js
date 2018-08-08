@@ -9,11 +9,18 @@ const News = ({data}) => {
     let date = new Date((item.time * 1000)).toLocaleString("en-US")
     return (
       <div className='card border-info mb-2' key={index}>
+        <div className='card-header text-white bg-info'>
+          <p className='card-text'>
+            {item.type} by {item.by}
+          </p>
+        </div>
         <div className='card-body'>
           <h5 className='card-title'>{item.title}</h5>
           <p className='card-text'>
-            {item.type} by {item.by} <a className='card-link' href={item.url}>{url}</a>
+            <a className='card-link' href={item.url}>{url}</a>
           </p>
+        </div>
+        <div className='card-footer'>
           <p className='card-text'>
             <small className='text-muted'>{date}</small>
           </p>
