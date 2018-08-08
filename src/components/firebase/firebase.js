@@ -12,13 +12,27 @@ var config = {
 
 firebase.initializeApp(config);
 
-var myBase = firebase.database();
+var myFirebase = firebase.database();
 
-function writeData(id, name, title) {
-  myBase.ref('id/' + id).set({
-    nameList: name,
-    titleList: title
-  });
-};
+const newsBase = {
+  writeNews: (id, title, text, url, author, date) => {
+    myFirebase.ref('news/' + id).set({
+      id: id,
+      title: title,
+      text: text,
+      url: url,
+      author: author,
+      date: date
+    })
+  },
+  readNews: () => {
+    myFirebase.ref('news').orderByKey().once('value')
+    .then(snapshot => {
+      snapshot.forEach(snapshotChild => {
+        console.log(snapshotChild.val())
+      })
+    })
+  }
+}
 
-export default writeData;
+export default newsBase;
