@@ -6,13 +6,17 @@ const News = ({data}) => {
     if (item.url) {
       url = item.url.split('/')[2]
     }
+    let date = new Date((item.time * 1000)).toLocaleString("en-US")
     return (
       <div className='card border-info mb-2' key={index}>
         <div className='card-body'>
           <h5 className='card-title'>{item.title}</h5>
-          <div>
+          <p className='card-text'>
             {item.type} by {item.by} <a className='card-link' href={item.url}>{url}</a>
-          </div>
+          </p>
+          <p className='card-text'>
+            <small className='text-muted'>{date}</small>
+          </p>
         </div>
       </div>
     )
