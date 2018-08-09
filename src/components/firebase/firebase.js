@@ -8,7 +8,7 @@ var myFirebase = firebase.database();
 
 const newsBase = {
   writeNews: (id, title, text, url, author, date) => {
-    myFirebase.ref('news/' + id).set({
+    return myFirebase.ref('news/' + id).set({
       id: id,
       title: title,
       text: text,
@@ -18,12 +18,8 @@ const newsBase = {
     })
   },
   readNews: () => {
-    myFirebase.ref('news').orderByKey().once('value')
-    .then(snapshot => {
-      snapshot.forEach(snapshotChild => {
-        console.log(snapshotChild.val())
-      })
-    })
+    return myFirebase.ref('news').once('value')
+    .then(snapshot => snapshot.val())
   }
 }
 
