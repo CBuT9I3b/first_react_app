@@ -1,16 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import configFirebase from '../config/api_keys';
 
-var config = {
-  apiKey: "AIzaSyBSCekjA1lXJuUdVTKpBuEVgSWu66yYeAU",
-  authDomain: "react-personal-page.firebaseapp.com",
-  databaseURL: "https://react-personal-page.firebaseio.com",
-  projectId: "react-personal-page",
-  storageBucket: "react-personal-page.appspot.com",
-  messagingSenderId: "80700621798"
-};
-
-firebase.initializeApp(config);
+firebase.initializeApp(configFirebase);
 
 var myFirebase = firebase.database();
 
