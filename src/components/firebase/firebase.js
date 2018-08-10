@@ -17,9 +17,9 @@ const newsBase = {
       date: date
     })
   },
-  readNews: () => {
+  readNews: (quantity) => {
     return myFirebase.ref('news').once('value')
-    .then(snapshot => snapshot.val())
+    .then(snapshot => snapshot.val().splice(1, quantity))
   }
 }
 
