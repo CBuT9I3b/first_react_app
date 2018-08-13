@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import hacker from './request/hackerNews';
+import hacker from '../../request';
 import News from './News';
 
 class ListNews extends Component {

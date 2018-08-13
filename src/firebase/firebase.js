@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
-import configFirebase from '../config/api_keys';
+import configFirebase from '../config';
 
 firebase.initializeApp(configFirebase);
 

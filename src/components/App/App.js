@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import ListNews from './components/ListNews';
+import ListNews from '../ListNews';
 
 class App extends Component {
   render() {
