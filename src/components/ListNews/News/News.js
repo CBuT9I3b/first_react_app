@@ -1,6 +1,7 @@
 import React from 'react';
 
-const News = ({data}) => {
+const News = (props) => {
+  const data = props.data
   const itemsList = data.map((item, index) => {
     let url = 'sorry, no link';
     if (item.url) {
@@ -15,7 +16,7 @@ const News = ({data}) => {
               <p>{item.type} by {item.by}</p>
             </div>
             <div className='col-auto'>
-              <button className='btn btn-warning'><i className='far fa-star'></i></button>
+              <button onClick={props.addedFavList} className='btn btn-warning'><i className='far fa-star'></i></button>
             </div>
           </div>
         </div>

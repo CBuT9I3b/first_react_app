@@ -8,11 +8,16 @@ class ListNews extends Component {
     this.state = {
       filter: 'top',
       quantity: 5,
-      items: []
+      items: [],
+      favList: []
     };
   }
 
-  fetchNews(filter, quantity) {
+  addedFavList = (event) => {
+    alert(this.state.filter)
+  }
+
+  fetchNews = (filter, quantity) => {
     hacker.newListStory(filter, quantity)
     .then(response => this.setState({items: response}))
   }
@@ -56,7 +61,7 @@ class ListNews extends Component {
             </select>
           </div>
         </div>
-        <News data={this.state.items} />
+        <News addedFavList={this.addedFavList.bind(this)} data={this.state.items} />
       </div>
     )
   }
