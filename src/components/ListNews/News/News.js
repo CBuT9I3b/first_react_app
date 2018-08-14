@@ -10,9 +10,14 @@ const News = ({data}) => {
     return (
       <div className='card border-info mb-2' key={index}>
         <div className='card-header text-white bg-info'>
-          <p className='card-text'>
-            {item.type} by {item.by}
-          </p>
+          <div className='row justify-content-between'>
+            <div className='col card-text'>
+              <p>{item.type} by {item.by}</p>
+            </div>
+            <div className='col-auto'>
+              <button className='btn btn-warning'><i className='far fa-star'></i></button>
+            </div>
+          </div>
         </div>
         <div className='card-body'>
           <h5 className='card-title'>{item.title}</h5>
