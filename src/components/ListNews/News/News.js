@@ -1,19 +1,15 @@
 import React from 'react';
 
 const News = (props) => {
-  const data = props.data
-  const itemsList = data.map((item, index) => {
-    let url = 'sorry, no link';
-    if (item.url) {
-      url = item.url.split('/')[2]
-    }
-    let date = new Date((item.time * 1000)).toLocaleString("en-US")
-    return (
-      <div className='card border-info mb-2' key={index}>
+  const { by, time, title, type, url } = props.data
+  const link = url ? url.split('/')[2] : 'sorry, no link'
+  const date = new Date((time * 1000)).toLocaleString("en-US")
+  return (
+    <div className='card border-info mb-2'>
         <div className='card-header text-white bg-info'>
           <div className='row justify-content-between'>
             <div className='col card-text'>
-              <p>{item.type} by {item.by}</p>
+              <p>{type} by {by}</p>
             </div>
             <div className='col-auto'>
               <button onClick={props.addedFavList} className='btn btn-warning'><i className='far fa-star'></i></button>
@@ -21,9 +17,9 @@ const News = (props) => {
           </div>
         </div>
         <div className='card-body'>
-          <h5 className='card-title'>{item.title}</h5>
+          <h5 className='card-title'>{title}</h5>
           <p className='card-text'>
-            <a className='card-link' href={item.url}>{url}</a>
+            <a className='card-link' href={url}>{link}</a>
           </p>
         </div>
         <div className='card-footer'>
@@ -31,12 +27,7 @@ const News = (props) => {
             <small className='text-muted'>{date}</small>
           </p>
         </div>
-      </div>
-    )
-  });
-
-  return (
-    <div>{itemsList}</div>
+    </div>
   )
 };
 

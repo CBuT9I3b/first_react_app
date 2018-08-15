@@ -8,12 +8,11 @@ class ListNews extends Component {
     this.state = {
       filter: 'top',
       quantity: 5,
-      items: [],
-      favList: []
+      items: []
     };
   }
 
-  addedFavList = (event) => {
+  addedFavList = () => {
     alert(this.state.filter)
   }
 
@@ -41,12 +40,14 @@ class ListNews extends Component {
   }
 
   render() {
+    const { filter, quantity, items } = this.state
     return (
       <div>
+
         <div className='form-group row mb-2'>
           <label className='col-md-auto col-form-label'>List</label>
           <div className='col-md-auto'>
-            <select className='form-control' defaultValue={this.state.filter} onChange={this.checkedFilter}>
+            <select className='form-control' defaultValue={filter} onChange={this.checkedFilter}>
               <option value='top'>Top news</option>
               <option value='best'>Best news</option>
               <option value='new'>New news</option>
@@ -54,14 +55,24 @@ class ListNews extends Component {
           </div>
           <label className='col-md-auto col-form-label'>Quantity news on page</label>
           <div className='col-md-auto'>
-            <select className='form-control' defaultValue={this.state.quantity} onChange={this.checkedQuantity}>
+            <select className='form-control' defaultValue={quantity} onChange={this.checkedQuantity}>
               <option value='5'>5</option>
               <option value='10'>10</option>
               <option value='50'>50</option>
             </select>
           </div>
         </div>
-        <News addedFavList={this.addedFavList.bind(this)} data={this.state.items} />
+
+        {items.map(item => {
+          return (
+            <News
+              addedFavList={this.addedFavList.bind(this)}
+              data={item}
+              key={item.id}
+            />
+          )
+        })}
+
       </div>
     )
   }
