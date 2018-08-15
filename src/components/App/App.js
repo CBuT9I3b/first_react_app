@@ -10,7 +10,7 @@ class App extends Component {
         <div className='row justify-content-center'>
           <div className='col-xl-10 col-lg-10'>
             <header>
-              <h1>React Hacker News <span className="badge badge-info">By Mike</span></h1>
+              <h1>React Hacker News</h1>
             </header>
             <ListNews />
             <footer></footer>

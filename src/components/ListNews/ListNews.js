@@ -13,7 +13,7 @@ class ListNews extends Component {
   }
 
   addedFavList = () => {
-    alert(this.state.filter)
+    alert('+')
   }
 
   fetchNews = (filter, quantity) => {
@@ -21,13 +21,13 @@ class ListNews extends Component {
     .then(response => this.setState({items: response}))
   }
 
-  checkedFilter = (event) => {
-    this.setState({filter: event.target.value})
-  };
+  checkedFilter = event => this.setState({
+    filter: event.target.value
+  })
 
-  checkedQuantity = (event) => {
-    this.setState({quantity: event.target.value})
-  }
+  checkedQuantity = event => this.setState({
+    quantity: event.target.value
+  })
 
   componentDidMount() {
     this.fetchNews(this.state.filter, this.state.quantity)
@@ -43,7 +43,6 @@ class ListNews extends Component {
     const { filter, quantity, items } = this.state
     return (
       <div>
-
         <div className='form-group row mb-2'>
           <label className='col-md-auto col-form-label'>List</label>
           <div className='col-md-auto'>
