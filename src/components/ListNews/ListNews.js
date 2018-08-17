@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import hacker from '../../request';
 import News from './News';
+import newsBase from '../../firebase';
 
 class ListNews extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class ListNews extends Component {
     };
   }
 
-  addedFavList = () => {
-    alert('+')
+  addedFavList = (item) => {
+    newsBase.writeNews(item)
   }
 
   fetchNews = (filter, quantity) => {
@@ -65,7 +66,7 @@ class ListNews extends Component {
         {items.map(item => {
           return (
             <News
-              addedFavList={this.addedFavList.bind(this)}
+              addedFavList={this.addedFavList.bind(this, item)}
               data={item}
               key={item.id}
             />
