@@ -1,1 +1,1 @@
-export { default } from './newsBase';
+export { default } from './firebase';

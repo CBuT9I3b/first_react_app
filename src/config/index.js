@@ -1,1 +1,1 @@
-export { default } from './configFirebase';
+export { default } from './api_keys';
