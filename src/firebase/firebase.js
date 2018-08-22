@@ -4,16 +4,16 @@ import CONFIG_FIREBASE from '../config';
 
 firebase.initializeApp(CONFIG_FIREBASE);
 
-var myFirebase = firebase.database();
+var base = firebase.database();
 
 const newsBase = {
   writeNews: item => {
-    return myFirebase.ref('favNews/' + item.id).set(item)
+    return base.ref('favNews/' + item.id).set(item)
   },
   readNews: quantity => {
-    return myFirebase.ref('news').once('value')
-    .then(snapshot => snapshot.val().splice(1, quantity))
+    return base.ref('news').once('value')
+      .then(snapshot => snapshot.val().splice(1, quantity))
   }
-}
+};
 
 export default newsBase;

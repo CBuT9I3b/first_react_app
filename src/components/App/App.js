@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css'
-import ListNews from '../ListNews';
+import { ListNews } from '..';
 
 class App extends Component {
   render() {
@@ -9,11 +9,10 @@ class App extends Component {
       <div className="container">
         <div className='row justify-content-center'>
           <div className='col-xl-10 col-lg-10'>
-            <header>
-              <h1>React Hacker News</h1>
+            <header className='jumbotron'>
+              <h1>React News</h1>
             </header>
             <ListNews />
-            <footer></footer>
           </div>
         </div>
       </div>

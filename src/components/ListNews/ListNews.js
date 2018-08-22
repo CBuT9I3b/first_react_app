@@ -15,20 +15,20 @@ class ListNews extends Component {
 
   addedFavList = (item) => {
     newsBase.writeNews(item)
-  }
+  };
 
   fetchNews = (filter, quantity) => {
     hacker.newListStory(filter, quantity)
     .then(response => this.setState({items: response}))
-  }
+  };
 
   checkedFilter = event => this.setState({
     filter: event.target.value
-  })
+  });
 
   checkedQuantity = event => this.setState({
     quantity: event.target.value
-  })
+  });
 
   componentDidMount() {
     this.fetchNews(this.state.filter, this.state.quantity)
@@ -58,7 +58,7 @@ class ListNews extends Component {
             <select className='form-control' defaultValue={quantity} onChange={this.checkedQuantity}>
               <option value='5'>5</option>
               <option value='10'>10</option>
-              <option value='50'>50</option>
+              <option value='20'>20</option>
             </select>
           </div>
         </div>

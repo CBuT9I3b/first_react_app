@@ -9,12 +9,12 @@ const hacker = {
   },
   newListStory: (filter, quantity) => {
     return hacker.listStory(filter)
-    .then(response => {
-      return Promise.all(response.data.splice(0, quantity).map((id) => {
-        return hacker.story(id)
-        .then(response => response.data)
-      }))
-    })
+      .then(response => {
+        return Promise.all(response.data.splice(0, quantity).map((id) => {
+          return hacker.story(id)
+            .then(response => response.data)
+        }))
+      })
   }
 };
 
