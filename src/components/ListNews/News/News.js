@@ -1,9 +1,9 @@
 import React from 'react';
 
 const News = (props) => {
-  const { by, time, title, type, url } = props.data
-  const link = url ? url.split('/')[2] : 'sorry, no link'
-  const date = new Date((time * 1000)).toLocaleString("en-US")
+  const { by, time, title, type, url } = props.data;
+  const link = url ? url.split('/')[2] : 'sorry, no link';
+  const date = new Date((time * 1000)).toLocaleString("en-US");
   return (
     <div className='card border-info mb-2'>
         <div className='card-header text-white bg-info'>

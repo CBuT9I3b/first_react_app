@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import hacker from '../../request';
-import News from './News';
 import newsBase from '../../firebase';
+import News from './News';
+import FormSort from './FormSort';
+
 
 class ListNews extends Component {
   constructor(props) {
@@ -41,38 +43,23 @@ class ListNews extends Component {
   }
 
   render() {
-    const { filter, quantity, items } = this.state
+    const { filter, quantity, items } = this.state;
     return (
       <div>
-        <div className='form-group row mb-2'>
-          <label className='col-md-auto col-form-label'>List</label>
-          <div className='col-md-auto'>
-            <select className='form-control' defaultValue={filter} onChange={this.checkedFilter}>
-              <option value='top'>Top news</option>
-              <option value='best'>Best news</option>
-              <option value='new'>New news</option>
-            </select>
-          </div>
-          <label className='col-md-auto col-form-label'>Quantity news on page</label>
-          <div className='col-md-auto'>
-            <select className='form-control' defaultValue={quantity} onChange={this.checkedQuantity}>
-              <option value='5'>5</option>
-              <option value='10'>10</option>
-              <option value='20'>20</option>
-            </select>
-          </div>
-        </div>
+        <FormSort
+          filter={filter}
+          quantity={quantity}
+          checkedFilter={this.checkedFilter.bind(this)}
+          checkedQuantity={this.checkedQuantity.bind(this)}
+        />
 
-        {items.map(item => {
-          return (
-            <News
-              addedFavList={this.addedFavList.bind(this, item)}
-              data={item}
-              key={item.id}
-            />
-          )
-        })}
-
+        {items.map(item => (
+          <News
+            addedFavList={this.addedFavList.bind(this, item)}
+            data={item}
+            key={item.id}
+          />
+        ))}
       </div>
     )
   }
