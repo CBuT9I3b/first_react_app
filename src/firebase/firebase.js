@@ -4,7 +4,7 @@ import CONFIG_FIREBASE from '../config';
 
 firebase.initializeApp(CONFIG_FIREBASE);
 
-var base = firebase.database();
+const base = firebase.database();
 
 const newsBase = {
   writeNews: item => {

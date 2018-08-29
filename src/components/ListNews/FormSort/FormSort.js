@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormSord = (props) => {
+const FormSord = props => {
   const { filter, quantity, checkedFilter, checkedQuantity } = props;
   return (
     <div className='form-group row mb-2'>

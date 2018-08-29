@@ -15,13 +15,15 @@ class ListNews extends Component {
     };
   }
 
-  addedFavList = (item) => {
+  addedFavList = item => {
     newsBase.writeNews(item)
   };
 
   fetchNews = (filter, quantity) => {
     hacker.newListStory(filter, quantity)
-    .then(response => this.setState({items: response}))
+      .then(response => this.setState({
+        items: response
+      }))
   };
 
   checkedFilter = event => this.setState({
