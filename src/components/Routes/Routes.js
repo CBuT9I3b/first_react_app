@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ListNews, AboutUs } from '..';
 
 const Routes = () => (
-  <div>
+  <Switch>
     <Route exact path='/' component={ListNews} />
     <Route path='/about_us' component={AboutUs} />
-  </div>
+  </Switch>
 );
 
 export default Routes;
