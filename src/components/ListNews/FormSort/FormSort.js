@@ -3,7 +3,7 @@ import React from 'react';
 const FormSord = props => {
   const { filter, quantity, checkedFilter, checkedQuantity } = props;
   return (
-    <div className='form-group row mb-2'>
+    <div className='form-group row mb-3'>
       <label className='col-md-auto col-form-label'>List</label>
       <div className='col-md-auto'>
         <select className='form-control' defaultValue={filter} onChange={checkedFilter}>
