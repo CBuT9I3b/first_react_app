@@ -4,8 +4,8 @@ import { ListNews, AboutUs } from '..';
 
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={ListNews} />
-    <Route exact path='/favorites_news' component={ListNews} />
+    <Route exact path='/' render={() => <ListNews type={'hacker'} />} />
+    <Route exact path='/favorites_news' render={() => <ListNews type={'fav'} />} />
     <Route path='/about_us' component={AboutUs} />
   </Switch>
 );

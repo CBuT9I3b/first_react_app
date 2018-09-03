@@ -1,1 +1,1 @@
-export { favNewsBase } from './database';
+export { default } from './database';

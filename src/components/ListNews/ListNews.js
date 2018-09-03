@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import hacker from '../../request';
-import { favNewsBase } from '../../firebase';
+import favNewsBase from '../../firebase';
 import News from './News';
 import FormSort from './FormSort';
 
@@ -11,8 +11,7 @@ class ListNews extends Component {
     this.state = {
       filter: 'top',
       quantity: 5,
-      items: [],
-      type: 'hacker'
+      items: []
     };
   }
 
@@ -21,14 +20,17 @@ class ListNews extends Component {
   };
 
   fetchNews = (filter, quantity) => {
-    if (this.state.type === 'hacker') {
+    if (this.props.type === 'hacker') {
       hacker.newListStory(filter, quantity)
         .then(response => this.setState({
           items: response
         }))
     }
-    if (this.state.type === "fav") {
-
+    if (this.props.type === "fav") {
+      favNewsBase.readNews(quantity)
+        .then(snapshot => this.setState({
+          items: snapshot
+        }))
     }
   };
 
@@ -37,15 +39,17 @@ class ListNews extends Component {
   });
 
   checkedQuantity = event => this.setState({
-    quantity: event.target.value
+    quantity: +event.target.value
   });
 
   componentDidMount() {
     this.fetchNews(this.state.filter, this.state.quantity)
   }
 
-  componentDidUpdate(_, prevState) {
-    if ((this.state.filter !== prevState.filter) || (this.state.quantity !== prevState.quantity)) {
+  componentDidUpdate(prevProps, prevState) {
+    if ((this.state.filter !== prevState.filter) ||
+      (this.state.quantity !== prevState.quantity) ||
+      (this.props.type !== prevProps.type)) {
       this.fetchNews(this.state.filter, this.state.quantity)
     }
   }

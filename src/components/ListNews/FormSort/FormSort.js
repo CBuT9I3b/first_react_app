@@ -15,9 +15,9 @@ const FormSord = props => {
       <label className='col-md-auto col-form-label'>Quantity news on page</label>
       <div className='col-md-auto'>
         <select className='form-control' defaultValue={quantity} onChange={checkedQuantity}>
-          <option value='5'>5</option>
-          <option value='10'>10</option>
-          <option value='20'>20</option>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
         </select>
       </div>
     </div>

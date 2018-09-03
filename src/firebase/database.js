@@ -5,8 +5,10 @@ const favNewsBase = {
     return database.ref('favNews/' + item.id).set(item)
   },
   readNews: quantity => {
-    return database.ref('news').once('value')
-      .then(snapshot => snapshot.val().splice(1, quantity))
+    return database.ref('favNews/')
+      .limitToFirst(quantity)
+      .once('value')
+      .then(snapshot => Object.values(snapshot.val()))
   }
 };
 
