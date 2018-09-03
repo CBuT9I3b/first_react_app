@@ -1,8 +1,8 @@
 import React from 'react';
 
 const AboutUs = () => (
-  <div className='card border-info mb-3'>
-    <div className='card-header text-white bg-info'>
+  <div className='card border-dark mb-3'>
+    <div className='card-header text-white bg-dark'>
       <div className='row justify-content-between'>
         <div className='col card-text'>
           <p>About Us</p>

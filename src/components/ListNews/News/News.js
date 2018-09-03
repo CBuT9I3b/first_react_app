@@ -5,15 +5,15 @@ const News = props => {
   const link = url ? url.split('/')[2] : 'sorry, no link';
   const date = new Date((time * 1000)).toLocaleString("en-US");
   return (
-    <div className='card border-info mb-3'>
-        <div className='card-header text-white bg-info'>
+    <div className='card border-dark mb-3'>
+        <div className='card-header text-white bg-dark'>
           <div className='row justify-content-between'>
             <div className='col card-text'>
               <p>{type} by {by}</p>
             </div>
-            <div className='col-auto'>
-              <button onClick={props.addedFavList} className='btn btn-warning'><i className='far fa-star'></i></button>
-            </div>
+            {/*<div className='col-auto'>*/}
+              {/*<button onClick={props.addedFavList} className='btn btn-warning'><i className='far fa-star'></i></button>*/}
+            {/*</div>*/}
           </div>
         </div>
         <div className='card-body'>

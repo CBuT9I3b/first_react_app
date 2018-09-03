@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import hacker from '../../request';
-import newsBase from '../../firebase';
+import { favNewsBase } from '../../firebase';
 import News from './News';
 import FormSort from './FormSort';
 
@@ -11,19 +11,25 @@ class ListNews extends Component {
     this.state = {
       filter: 'top',
       quantity: 5,
-      items: []
+      items: [],
+      type: 'hacker'
     };
   }
 
   addedFavList = item => {
-    newsBase.writeNews(item)
+    favNewsBase.writeNews(item)
   };
 
   fetchNews = (filter, quantity) => {
-    hacker.newListStory(filter, quantity)
-      .then(response => this.setState({
-        items: response
-      }))
+    if (this.state.type === 'hacker') {
+      hacker.newListStory(filter, quantity)
+        .then(response => this.setState({
+          items: response
+        }))
+    }
+    if (this.state.type === "fav") {
+
+    }
   };
 
   checkedFilter = event => this.setState({
