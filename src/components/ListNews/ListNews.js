@@ -4,14 +4,14 @@ import favNewsBase from '../../firebase';
 import News from './News';
 import FormSort from './FormSort';
 
-
 class ListNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filter: 'top',
       quantity: 5,
-      items: []
+      items: [],
+      isLoading: false
     };
   }
 
@@ -20,16 +20,21 @@ class ListNews extends Component {
   };
 
   fetchNews = (filter, quantity) => {
+    this.setState({
+      isLoading: true
+    });
     if (this.props.type === 'hacker') {
       hacker.newListStory(filter, quantity)
         .then(response => this.setState({
-          items: response
+          items: response,
+          isLoading: false
         }))
     }
     if (this.props.type === "fav") {
       favNewsBase.readNews(quantity)
         .then(snapshot => this.setState({
-          items: snapshot
+          items: snapshot,
+          isLoading: false
         }))
     }
   };
@@ -55,7 +60,7 @@ class ListNews extends Component {
   }
 
   render() {
-    const { filter, quantity, items } = this.state;
+    const { filter, quantity, items, isLoading } = this.state;
     return (
       <div>
         <FormSort
@@ -65,13 +70,15 @@ class ListNews extends Component {
           checkedQuantity={this.checkedQuantity.bind(this)}
         />
 
-        {items.map(item => (
-          <News
-            addedFavList={this.addedFavList.bind(this, item)}
-            data={item}
-            key={item.id}
-          />
-        ))}
+        {isLoading? <div>Loading...</div> :
+          items.map(item => (
+            <News
+              addedFavList={this.addedFavList.bind(this, item)}
+              data={item}
+              key={item.id}
+            />
+          ))
+        }
       </div>
     )
   }
