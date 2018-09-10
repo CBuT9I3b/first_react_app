@@ -5,16 +5,9 @@ const News = props => {
   const link = url ? url.split('/')[2] : 'sorry, no link';
   const date = new Date((time * 1000)).toLocaleString("en-US");
   return (
-    <div className='card border-dark mb-3'>
-        <div className='card-header text-white bg-dark'>
-          <div className='row justify-content-between'>
-            <div className='col card-text'>
-              <p>{type} by {by}</p>
-            </div>
-            {/*<div className='col-auto'>*/}
-              {/*<button onClick={props.addedFavList} className='btn btn-warning'><i className='far fa-star'></i></button>*/}
-            {/*</div>*/}
-          </div>
+    <div className='card border-secondary mb-3'>
+        <div className='card-header bg-light'>
+          {type} by {by}
         </div>
         <div className='card-body'>
           <h5 className='card-title'>{title}</h5>
@@ -23,9 +16,7 @@ const News = props => {
           </p>
         </div>
         <div className='card-footer'>
-          <p className='card-text'>
-            <small className='text-muted'>{date}</small>
-          </p>
+          <small className='text-muted'>{date}</small>
         </div>
     </div>
   )
