@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutUs = () => (
-  <div className='card border-secondary mb-3'>
+  <div className='card border-light mb-3'>
     <div className='card-header bg-light'>
       About Us
     </div>

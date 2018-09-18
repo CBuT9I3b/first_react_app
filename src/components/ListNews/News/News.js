@@ -5,7 +5,7 @@ const News = props => {
   const link = url ? url.split('/')[2] : 'sorry, no link';
   const date = new Date((time * 1000)).toLocaleString("en-US");
   return (
-    <div className='card border-secondary mb-3'>
+    <div className='card border-light mb-3'>
         <div className='card-header bg-light'>
           {type} by {by}
         </div>
