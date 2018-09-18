@@ -13,6 +13,9 @@
 # api keys
 api_keys.js
 
+# firebase
+/.firebase
+
 # misc
 .DS_Store
 .env.local
