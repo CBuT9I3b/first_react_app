@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
-import CONFIG_FIREBASE from '../config';
+import CONFIG_FIREBASE from '../../config/index';
 
 firebase.initializeApp(CONFIG_FIREBASE);
 

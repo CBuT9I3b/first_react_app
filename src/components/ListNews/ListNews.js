@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import hacker from '../../request';
-import favNewsBase from '../../firebase';
+import { HackerNewsApi, DataBaseApi } from '../../api';
 import News from './News';
 import FormSort from './FormSort';
 
@@ -16,7 +15,7 @@ class ListNews extends Component {
   }
 
   addedFavList = item => {
-    favNewsBase.writeNews(item)
+    DataBaseApi.setStory(item)
   };
 
   fetchNews = (filter, quantity) => {
@@ -24,14 +23,14 @@ class ListNews extends Component {
       isLoading: true
     });
     if (this.props.type === 'hacker') {
-      hacker.newListStory(filter, quantity)
+      HackerNewsApi.getAllStory(filter, quantity)
         .then(response => this.setState({
           items: response,
           isLoading: false
         }))
     }
     if (this.props.type === "fav") {
-      favNewsBase.readNews(quantity)
+      DataBaseApi.getStory(quantity)
         .then(snapshot => this.setState({
           items: snapshot,
           isLoading: false
@@ -70,7 +69,7 @@ class ListNews extends Component {
           checkedQuantity={this.checkedQuantity.bind(this)}
         />
 
-        {isLoading? <div>Loading...</div> :
+        {isLoading? <div className='text-center'>Loading...</div> :
           items.map(item => (
             <News
               addedFavList={this.addedFavList.bind(this, item)}

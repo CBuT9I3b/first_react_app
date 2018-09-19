@@ -1,15 +1,18 @@
 import { database } from "./firebase";
 
-const favNewsBase = {
-  writeNews: item => {
-    return database.ref('favNews/' + item.id).set(item)
-  },
-  readNews: quantity => {
+class DataBaseApi {
+
+  static setStory(item) {
+    return database.ref(`favNews/${item.id}`).set(item)
+  }
+
+  static getStory(quantity) {
     return database.ref('favNews/')
       .limitToFirst(quantity)
       .once('value')
       .then(snapshot => Object.values(snapshot.val()))
   }
-};
 
-export default favNewsBase;
+}
+
+export default DataBaseApi;
