@@ -14,9 +14,6 @@ const NavBar = () => (
           <NavLink className='nav-link text-white' to='/'>Hacker News</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className='nav-link text-white' to='/favorites_news'>Favorites News</NavLink>
-        </li>
-        <li className="nav-item">
           <NavLink className='nav-link text-white' to='/about_us'>About Us</NavLink>
         </li>
       </ul>
