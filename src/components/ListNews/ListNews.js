@@ -18,7 +18,7 @@ class ListNews extends Component {
     this.setState({
       isLoading: true
     });
-    HackerNewsApi.getAllStory(filter, quantity)
+    HackerNewsApi.getAllStories(filter, quantity)
       .then(response => this.setState({
         items: response,
         isLoading: false

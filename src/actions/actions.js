@@ -1,23 +1,23 @@
-export const SELECT_FILTER = 'SELECT_FILTER';
-export const GET_STORY_BEGIN = 'GET_STORY_BEGIN';
-export const GET_STORY_SUCCESS = 'GET_STORY_SUCCESS';
-export const GET_STORY_ERROR = 'GET_STORY_ERROR';
+// actions type
 
-export const getStoryBegin = () => ({
-  type: GET_STORY_BEGIN
+export const GET_ITEMS_REQUEST = 'GET_STORY_BEGIN';
+export const GET_ITEMS_ERROR = 'GET_STORY_ERROR';
+export const GET_ITEMS_SUCCESS = 'GET_STORY_SUCCESS';
+
+// actions creators
+
+export const getItemsRequest = () => ({
+  type: GET_ITEMS_REQUEST
 });
 
-export const getStorySuccess = story => ({
-  type: GET_STORY_SUCCESS,
-  payload: { story }
-});
-
-export const getStoryError = error => ({
-  type: GET_STORY_ERROR,
+export const getItemsError = error => ({
+  type: GET_ITEMS_ERROR,
   error: { error }
 });
 
-export const selectFilter = filter => ({
-  type: SELECT_FILTER,
-  filter: { filter }
+export const getItemsSuccess = story => ({
+  type: GET_ITEMS_SUCCESS,
+  response: { items }
 });
+
+// thunk functions
