@@ -1,6 +1,8 @@
+import { HackerNewsApi } from '../api';
+
 // actions type
 
-export const GET_ITEMS_REQUEST = 'GET_STORY_BEGIN';
+export const GET_ITEMS_REQUEST = 'GET_ITEMS_REQUEST';
 export const GET_ITEMS_ERROR = 'GET_STORY_ERROR';
 export const GET_ITEMS_SUCCESS = 'GET_STORY_SUCCESS';
 
@@ -15,9 +17,19 @@ export const getItemsError = error => ({
   error: { error }
 });
 
-export const getItemsSuccess = story => ({
+export const getItemsSuccess = items => ({
   type: GET_ITEMS_SUCCESS,
-  response: { items }
+  story: items
 });
 
 // thunk functions
+
+export const getItems = (typeStory, quantity) => dispatch => {
+  dispatch(getItemsRequest());
+  return HackerNewsApi.getAllStories(typeStory, quantity)
+    .catch(error => dispatch(getItemsError(error)))
+    .then(response => {
+      dispatch(getItemsSuccess(response.data));
+      return response.data;
+    })
+};
