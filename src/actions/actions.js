@@ -14,7 +14,7 @@ export const getItemsRequest = () => ({
 
 export const getItemsError = error => ({
   type: GET_ITEMS_ERROR,
-  error: { error }
+  error: error
 });
 
 export const getItemsSuccess = items => ({
