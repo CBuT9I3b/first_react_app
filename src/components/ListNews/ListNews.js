@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HackerNewsApi } from '../../api';
 import News from './News';
 import FormSort from './FormSort';
+import Progress from './Progress';
 
 class ListNews extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class ListNews extends Component {
           checkedQuantity={this.checkedQuantity.bind(this)}
         />
 
-        {isLoading? <div className='text-center'>Loading...</div> :
+        {isLoading? <Progress /> :
           items.map(item => (
             <News
               data={item}
