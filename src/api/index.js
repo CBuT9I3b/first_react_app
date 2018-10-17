@@ -1,1 +1,1 @@
-export { default as HackerNewsApi } from './hackerNews';
+export { default } from './hackerNews';
