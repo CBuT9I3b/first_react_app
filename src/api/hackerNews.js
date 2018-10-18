@@ -1,16 +1,25 @@
-import axios from "axios";
+import axios from 'axios';
 
-class HackerNewsApi {
+export const typeStories = {
+  NEW: 'new',
+  TOP: 'top',
+  BEST: 'best',
+  ASK: 'ask',
+  SHOW: 'show',
+  JOB: 'job'
+}
+
+export class HackerNewsApi {
   static getItem(id) {
     return axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
   }
 
-  static getListStories(typeStory) {
-    return axios.get(`https://hacker-news.firebaseio.com/v0/${typeStory}stories.json`)
+  static getListStories(typeStories) {
+    return axios.get(`https://hacker-news.firebaseio.com/v0/${typeStories}stories.json`)
   }
 
-  static getAllStories(typeStory, quantity) {
-    return this.getListStories(typeStory)
+  static getAllStories(typeStories, quantity) {
+    return this.getListStories(typeStories)
       .then(response => {
         return Promise.all(response.data.splice(0, quantity).map((id) => {
           return this.getItem(id)
@@ -19,5 +28,3 @@ class HackerNewsApi {
       })
   }
 }
-
-export default HackerNewsApi;

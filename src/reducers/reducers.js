@@ -1,35 +1,57 @@
+import { combineReducers } from 'redux';
+import { typeStories } from '../api';
+
 import {
-  GET_ITEMS_REQUEST,
-  GET_ITEMS_ERROR,
-  GET_ITEMS_SUCCESS
+  GET_CONTENT_REQUEST,
+  GET_CONTENT_ERROR,
+  GET_CONTENT_SUCCESS,
+  SET_TYPE_CONTENT
 } from '../actions';
 
 export const initialState = {
   isLoading: false,
   isError: false,
-  items: []
+  items: [],
+  typeContent: typeStories.NEW
 }
 
-export function rootReducer(state = initialState, action) {
+function getContent(state = initialState, action) {
   switch (action.type) {
-    case GET_ITEMS_REQUEST:
+    case GET_CONTENT_REQUEST:
       return {
         ...state,
         isLoading: true
       }
-    case GET_ITEMS_ERROR:
+    case GET_CONTENT_ERROR:
       return {
         ...state,
         isLoading: false,
-        isError: action.error
+        isError: action.payload
       }
-    case GET_ITEMS_SUCCESS:
+    case GET_CONTENT_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        items: action.story
+        items: action.payload
       }
     default:
       return state
   }
 }
+
+function setTypeContent(state = initialState, action) {
+  switch (action.type) {
+    case SET_TYPE_CONTENT:
+      return {
+        ...state,
+        typeContent: action.payload
+      }
+    default:
+      return state
+  }
+}
+
+export const rootReducer = combineReducers({
+  getContent,
+  setTypeContent
+})

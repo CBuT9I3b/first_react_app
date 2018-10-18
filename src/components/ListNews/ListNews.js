@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HackerNewsApi } from '../../api';
+import { HackerNewsApi, typeStories } from '../../api';
 import News from './News';
 import FormSort from './FormSort';
 import Progress from './Progress';
@@ -8,7 +8,7 @@ class ListNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: 'top',
+      filter: typeStories.NEW,
       quantity: 5,
       items: [],
       isLoading: false

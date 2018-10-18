@@ -1,1 +1,1 @@
-export { default } from './hackerNews';
+export * from './hackerNews';
