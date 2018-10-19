@@ -35,7 +35,7 @@ export const getStories = (typeStories, quantity) => dispatch => {
   return HackerNewsApi.getAllStories(typeStories, quantity)
     .catch(error => dispatch(getContentError(error)))
     .then(response => {
-      dispatch(getContentSuccess(response.data));
-      return response.data;
+      dispatch(getContentSuccess(response));
+      return response;
     })
 };

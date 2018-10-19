@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getItems } from '../actions';
+import { getStories } from '../actions';
+import { Article } from '../components';
+import PropTypes from 'prop-types';
 
 class ListStories extends Component {
   componentDidMount() {
-    getItems(this.props.typeContent, 10)
+    const { dispatch, typeContent } = this.props
+    dispatch(getStories(typeContent, 10))
+  }
+
+  render() {
+    const { items } = this.props
+    return [
+      items.map(item => <Article data={item} key={item.id} />)
+    ]
   }
 }
 
+ListStories.propTypes = {
+  items: PropTypes.array.isRequired,
+  typeContent: PropTypes.string.isRequired
+}
+
 const mapStateToProps = state => {
-  const { isLoading, isError, items, typeContent } = state
+  const { isLoading, isError, items, typeContent } = state.getContent
   return {
     isLoading,
     isError,
