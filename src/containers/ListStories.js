@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getStories } from '../actions';
 import { Article } from '../components';
-import PropTypes from 'prop-types';
 
 class ListStories extends Component {
   componentDidMount() {
