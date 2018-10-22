@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from './containers';
 import { Provider } from 'react-redux';
 import configureStore from './store';
+import { App } from './containers';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
