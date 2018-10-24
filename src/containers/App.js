@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ListStories from './ListStories';
-import { Header, Progress, FormSort } from '../components';
+import { Header, Progress, FormSort, Routes, NavBar } from '../components';
 
 class App extends Component {
   render() {
@@ -12,9 +11,10 @@ class App extends Component {
         <div className='row justify-content-center'>
           <div className='col-xl-10 col-lg-10'>
             { isLoading ? <Progress /> : null}
+            <NavBar />
             <Header />
             <FormSort />
-            <ListStories />
+            <Routes />
           </div>
         </div>
       </div>
