@@ -11,7 +11,7 @@ const NavBar = () => (
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <NavLink className='nav-link text-white' to={`/${typeStories.NEW}`}>New</NavLink>
         </li>
         <li className="nav-item">
@@ -28,7 +28,7 @@ const NavBar = () => (
         </li>
         <li className="nav-item">
           <NavLink className='nav-link text-white' to={`/${typeStories.JOB}`}>Job</NavLink>
-        </li> */}
+        </li>
         <li className="nav-item">
           <NavLink className='nav-link text-white' to='/about'>About Us</NavLink>
         </li>

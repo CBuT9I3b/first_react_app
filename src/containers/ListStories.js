@@ -11,17 +11,22 @@ class ListStories extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch } = this.props;
-    if (this.props.type !== prevProps.type) {
-      dispatch(getStories(this.props.type, 10))
+    const { dispatch, type } = this.props;
+    if (type !== prevProps.type) {
+      dispatch(getStories(type, 10))
     }
   }
 
   render() {
-    const { items, isError } = this.props
+    const { items, isError, isLoading } = this.props
     if (isError) {
       return (
         <div>{isError}</div>
+      )
+    }
+    if (isLoading) {
+      return (
+        <div>Loading...</div>
       )
     }
     return [
@@ -32,7 +37,8 @@ class ListStories extends Component {
 
 ListStories.propTypes = {
   items: PropTypes.array.isRequired,
-  typeContent: PropTypes.string.isRequired
+  typeContent: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => {
