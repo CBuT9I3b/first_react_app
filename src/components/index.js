@@ -6,3 +6,4 @@ export { default as AboutUs } from './AboutUs';
 export { default as Article } from './Article';
 export { default as Routes } from './Routes';
 export { default as NotFound } from './NotFound';
+export { default as App } from './App';
