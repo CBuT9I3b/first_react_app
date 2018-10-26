@@ -2,7 +2,7 @@ import React from 'react';
 import "@material/linear-progress/dist/mdc.linear-progress.css";
 
 const Progress = () => (
-  <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
+  <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate progress">
     <div className="mdc-linear-progress__buffering-dots"></div>
     <div className="mdc-linear-progress__buffer"></div>
     <div className="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
