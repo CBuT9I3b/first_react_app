@@ -18,15 +18,10 @@ class ListStories extends Component {
   }
 
   render() {
-    const { items, isError, isLoading } = this.props
+    const { items, isError } = this.props
     if (isError) {
       return (
         <div>{isError}</div>
-      )
-    }
-    if (isLoading) {
-      return (
-        <div>Loading...</div>
       )
     }
     return [
@@ -37,18 +32,12 @@ class ListStories extends Component {
 
 ListStories.propTypes = {
   items: PropTypes.array.isRequired,
-  typeContent: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  typeContent: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => {
-  const { isLoading, isError, items, typeContent } = state.getContent
-  return {
-    isLoading,
-    isError,
-    items,
-    typeContent
-  }
+  const { isError, items } = state.getContent
+  return { isError, items}
 }
 
 export default connect(mapStateToProps)(ListStories);
