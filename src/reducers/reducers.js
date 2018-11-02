@@ -4,8 +4,7 @@ import { typeStories } from '../api';
 import {
   GET_CONTENT_REQUEST,
   GET_CONTENT_ERROR,
-  GET_CONTENT_SUCCESS,
-  SET_TYPE_CONTENT
+  GET_CONTENT_SUCCESS
 } from '../actions';
 
 export const initialState = {
@@ -39,19 +38,6 @@ function getContent(state = initialState, action) {
   }
 }
 
-function setTypeContent(state = initialState, action) {
-  switch (action.type) {
-    case SET_TYPE_CONTENT:
-      return {
-        ...state,
-        typeContent: action.payload
-      }
-    default:
-      return state
-  }
-}
-
 export const rootReducer = combineReducers({
-  getContent,
-  setTypeContent
+  getContent
 })
