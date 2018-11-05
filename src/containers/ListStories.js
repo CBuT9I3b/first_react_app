@@ -32,12 +32,11 @@ class ListStories extends Component {
 
 ListStories.propTypes = {
   items: PropTypes.array.isRequired,
-  typeContent: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => {
   const { isError, items } = state.getContent
-  return { isError, items}
+  return { isError, items }
 }
 
 export default connect(mapStateToProps)(ListStories);
