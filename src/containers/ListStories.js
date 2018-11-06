@@ -18,25 +18,28 @@ class ListStories extends Component {
   }
 
   render() {
-    const { items, isError } = this.props
-    if (isError) {
-      return (
-        <div>{isError}</div>
-      )
+    const { isLoading, isError, items } = this.props
+    if (isLoading) {
+      return <div>Loading...</div>
     }
-    return [
-      items.map(item => <Article data={item} key={item.id} />)
-    ]
+    if (isError) {
+      return <div>{isError}</div>
+    }
+    if (items.length !== 0) {
+      return items.map(item => <Article data={item} key={item.id} />)
+    }
+    return null
   }
 }
 
 ListStories.propTypes = {
-  items: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => {
-  const { isError, items } = state.getContent
-  return { isError, items }
+  const { isLoading, isError, items } = state.getContent
+  return { isLoading, isError, items }
 }
 
 export default connect(mapStateToProps)(ListStories);

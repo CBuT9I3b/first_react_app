@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { typeStories } from '../api';
+import { TYPE_STORIES } from '../api';
 
 import {
   GET_CONTENT_REQUEST,
@@ -11,7 +11,7 @@ export const initialState = {
   isLoading: false,
   isError: false,
   items: [],
-  typeContent: typeStories.NEW
+  typeContent: TYPE_STORIES.NEW
 }
 
 function getContent(state = initialState, action) {
@@ -19,7 +19,8 @@ function getContent(state = initialState, action) {
     case GET_CONTENT_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        isError: false
       }
     case GET_CONTENT_ERROR:
       return {
@@ -31,6 +32,7 @@ function getContent(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+        isError: false,
         items: action.payload
       }
     default:

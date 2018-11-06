@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const typeStories = {
+export const TYPE_STORIES = {
   NEW: 'new',
   TOP: 'top',
   BEST: 'best',
@@ -21,7 +21,7 @@ export class HackerNewsApi {
   static getAllStories(typeStories, quantity) {
     return this.getListStories(typeStories)
       .then(response => {
-        return Promise.all(response.data.splice(0, quantity).map((id) => {
+        return axios.all(response.data.splice(0, quantity).map((id) => {
           return this.getItem(id)
             .then(response => response.data)
         }))

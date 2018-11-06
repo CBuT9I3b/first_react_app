@@ -1,5 +1,5 @@
 import React from 'react';
-import { typeStories } from '../../api';
+import { TYPE_STORIES } from '../../api';
 
 const FormSort = props => {
   const { filter, quantity, checkedFilter, checkedQuantity } = props;
@@ -8,9 +8,9 @@ const FormSort = props => {
       <label className='col-md-auto col-form-label'>List</label>
       <div className='col-md-auto'>
         <select className='form-control' defaultValue={filter} onChange={checkedFilter} disabled>
-          <option value={typeStories.TOP}>Top news</option>
-          <option value={typeStories.BEST}>Best news</option>
-          <option value={typeStories.NEW}>New news</option>
+          <option value={TYPE_STORIES.TOP}>Top news</option>
+          <option value={TYPE_STORIES.BEST}>Best news</option>
+          <option value={TYPE_STORIES.NEW}>New news</option>
         </select>
       </div>
       <label className='col-md-auto col-form-label'>Quantity news on page</label>

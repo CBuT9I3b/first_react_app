@@ -6,9 +6,10 @@ import { Progress } from '../components';
 class Loading extends Component {
   render() {
     const { isLoading } = this.props
-    return (
-      isLoading ? <Progress /> : null
-    )
+    if (isLoading) {
+      return <Progress />
+    }
+    return null
   }
 }
 
