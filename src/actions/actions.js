@@ -24,15 +24,29 @@ export const getContentSuccess = items => ({
 
 // thunk functions
 
-export const getStories = (typeStories, quantity) => dispatch => {
-  dispatch(getContentRequest());
-  return HackerNewsApi.getAllStories(typeStories, quantity)
-    .then(response => {
-      dispatch(getContentSuccess(response));
-      return response;
-    })
-    .catch(error => {
-      dispatch(getContentError(error.message));
-      return error;
-    })
-};
+// export const getStories = (typeStories, quantity) => dispatch => {
+//   dispatch(getContentRequest());
+//   return HackerNewsApi.getAllStories(typeStories, quantity)
+//     .then(response => {
+//       dispatch(getContentSuccess(response));
+//       return response;
+//     })
+//     .catch(error => {
+//       dispatch(getContentError(error.message));
+//       return error;
+//     })
+// };
+
+export function asyncGetStories(typeStories, quantity) {
+  return async function(dispatch) {
+    dispatch(getContentRequest())
+    try {
+      const stories = await HackerNewsApi.asyncGetAllStories(typeStories, quantity)
+      dispatch(getContentSuccess(stories))
+      return stories
+    }   catch (error) {
+      dispatch(getContentError(error.message))
+      return error
+    }
+  }
+}
