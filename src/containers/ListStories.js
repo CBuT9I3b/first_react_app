@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getStories } from '../actions';
+import { asyncGetStories } from '../actions';
 import { Article } from '../components';
 
 class ListStories extends Component {
   componentDidMount() {
     const { dispatch, type } = this.props
-    dispatch(getStories(type, 10))
+    dispatch(asyncGetStories(type, 10))
   }
 
   componentDidUpdate(prevProps) {
     const { dispatch, type } = this.props;
     if (type !== prevProps.type) {
-      dispatch(getStories(type, 10))
+      dispatch(asyncGetStories(type, 10))
     }
   }
 
