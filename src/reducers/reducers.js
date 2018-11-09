@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { TYPE_STORIES } from '../api';
 
 import {
   GET_CONTENT_REQUEST,
@@ -7,14 +6,11 @@ import {
   GET_CONTENT_SUCCESS
 } from '../actions';
 
-export const initialState = {
+function getContent(state = {
   isLoading: false,
   isError: false,
-  items: [],
-  typeContent: TYPE_STORIES.NEW
-}
-
-function getContent(state = initialState, action) {
+  items: []
+}, action) {
   switch (action.type) {
     case GET_CONTENT_REQUEST:
       return {
