@@ -1,7 +1,7 @@
 import React from 'react';
 import "@material/linear-progress/dist/mdc.linear-progress.css";
 
-const Progress = () => (
+const LinearProgress = () => (
   <div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate progress">
     <div className="mdc-linear-progress__buffering-dots"></div>
     <div className="mdc-linear-progress__buffer"></div>
@@ -14,4 +14,4 @@ const Progress = () => (
   </div>
 );
 
-export default Progress;
+export default LinearProgress;

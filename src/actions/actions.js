@@ -5,21 +5,30 @@ import { HackerNewsApi } from '../api';
 export const GET_CONTENT_REQUEST = 'GET_CONTENT_REQUEST';
 export const GET_CONTENT_ERROR = 'GET_CONTENT_ERROR';
 export const GET_CONTENT_SUCCESS = 'GET_CONTENT_SUCCESS';
+export const SELECT_TYPE_CONTENT = 'SELECT_TYPE_CONTENT';
 
 // actions creators
 
-export const getContentRequest = () => ({
-  type: GET_CONTENT_REQUEST
+export const getContentRequest = typeContent => ({
+  type: GET_CONTENT_REQUEST,
+  typeContent
 });
 
 export const getContentError = error => ({
   type: GET_CONTENT_ERROR,
-  payload: error
+  error
 });
 
-export const getContentSuccess = items => ({
+export const getContentSuccess = (typeContent, items) => ({
   type: GET_CONTENT_SUCCESS,
-  payload: items
+  typeContent,
+  items,
+  receivedAt: Date.now()
+});
+
+export const selectTypeContent = typeContent => ({
+  type: SELECT_TYPE_CONTENT,
+  typeContent
 });
 
 // thunk functions
@@ -39,10 +48,10 @@ export const getContentSuccess = items => ({
 
 export function asyncGetStories(typeStories, quantity) {
   return async function(dispatch) {
-    dispatch(getContentRequest())
+    dispatch(getContentRequest(typeStories))
     try {
       const stories = await HackerNewsApi.asyncGetAllStories(typeStories, quantity)
-      dispatch(getContentSuccess(stories))
+      dispatch(getContentSuccess(typeContent, stories))
       return stories
     }   catch (error) {
       dispatch(getContentError(error.message))

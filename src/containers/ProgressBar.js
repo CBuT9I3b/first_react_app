@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Progress } from '../components';
+import { LinearProgress } from '../components';
 
-class Loading extends Component {
+class ProgressBar extends Component {
   render() {
     const { isLoading } = this.props
     if (isLoading) {
-      return <Progress />
+      return <LinearProgress />
     }
     return null
   }
 }
 
-Loading.propTypes = {
+ProgressBar.propTypes = {
   isLoading: PropTypes.bool.isRequired
 }
 
@@ -22,4 +22,4 @@ const mapStateToProps = state => {
   return { isLoading }
 }
 
-export default connect(mapStateToProps)(Loading);
+export default connect(mapStateToProps)(ProgressBar);
