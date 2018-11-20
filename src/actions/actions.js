@@ -46,16 +46,33 @@ export const selectTypeContent = typeContent => ({
 //     })
 // };
 
-export function asyncGetStories(typeStories, quantity) {
+function asyncGetStories(typeStories, quantity) {
   return async function(dispatch) {
     dispatch(getContentRequest(typeStories))
     try {
       const stories = await HackerNewsApi.asyncGetAllStories(typeStories, quantity)
-      dispatch(getContentSuccess(typeContent, stories))
+      dispatch(getContentSuccess(typeStories, stories))
       return stories
     }   catch (error) {
       dispatch(getContentError(error.message))
       return error
+    }
+  }
+}
+
+function shouldGetStories(state, typeStories) {
+  const content = state.contentByType[typeStories]
+  if (!content) {
+    return true
+  } else if (content.isLoading) {
+    return false
+  }
+}
+
+export function getStoriesIfNeeded(typeStories, quantity) {
+  return function(dispatch, getState) {
+    if (shouldGetStories(getState(), typeStories)) {
+      return dispatch(asyncGetStories(typeStories, quantity))
     }
   }
 }
