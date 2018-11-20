@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { asyncGetStories } from '../actions';
+import { selectTypeContent, getStoriesIfNeeded } from '../actions';
 import { Article } from '../components';
 
 class ListStories extends Component {
+
   componentDidMount() {
-    const { dispatch, type } = this.props
-    dispatch(asyncGetStories(type, 10))
+    const { dispatch, selectType, type } = this.props
+    dispatch(selectTypeContent(type))
+    dispatch(getStoriesIfNeeded(selectType, 10))
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch, type } = this.props;
+    const { dispatch, selectType, type } = this.props;
+    if (selectType !== prevProps.selectType) {
+      dispatch(getStoriesIfNeeded(selectType, 10))
+    }
     if (type !== prevProps.type) {
-      dispatch(asyncGetStories(type, 10))
+      dispatch(selectTypeContent(type))
     }
   }
 
@@ -38,8 +43,9 @@ ListStories.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { isLoading, isError, items } = state.getContent
-  return { isLoading, isError, items }
+  const { selectType, contentByType } = state
+  const { isLoading, isError, items } = contentByType[selectType] || { isLoading: true, isError: false, items: []}
+  return { isLoading, isError, items, selectType }
 }
 
 export default connect(mapStateToProps)(ListStories);
