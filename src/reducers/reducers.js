@@ -8,7 +8,7 @@ import {
   SELECT_TYPE_CONTENT
 } from '../actions';
 
-function selectType(state = TYPE_STORIES.NEW, action) {
+function selectedType(state = TYPE_STORIES.NEW, action) {
   switch (action.type) {
     case SELECT_TYPE_CONTENT:
       return action.typeContent
@@ -62,6 +62,6 @@ function contentByType(state = {}, action) {
 }
 
 export const rootReducer = combineReducers({
-  selectType,
+  selectedType,
   contentByType
 })

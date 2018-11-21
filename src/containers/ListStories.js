@@ -5,17 +5,16 @@ import { selectTypeContent, getStoriesIfNeeded } from '../actions';
 import { Article } from '../components';
 
 class ListStories extends Component {
-
   componentDidMount() {
-    const { dispatch, selectType, type } = this.props
+    const { dispatch, selectedType, type } = this.props
     dispatch(selectTypeContent(type))
-    dispatch(getStoriesIfNeeded(selectType, 10))
+    dispatch(getStoriesIfNeeded(selectedType, 10))
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch, selectType, type } = this.props;
-    if (selectType !== prevProps.selectType) {
-      dispatch(getStoriesIfNeeded(selectType, 10))
+    const { dispatch, selectedType, type } = this.props;
+    if (selectedType !== prevProps.selectedType) {
+      dispatch(getStoriesIfNeeded(selectedType, 10))
     }
     if (type !== prevProps.type) {
       dispatch(selectTypeContent(type))
@@ -43,9 +42,9 @@ ListStories.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { selectType, contentByType } = state
-  const { isLoading, isError, items } = contentByType[selectType] || { isLoading: true, isError: false, items: []}
-  return { isLoading, isError, items, selectType }
+  const { selectedType, contentByType } = state
+  const { isLoading, isError, items } = contentByType[selectedType] || { isLoading: false, isError: false, items: []}
+  return { isLoading, isError, items, selectedType }
 }
 
 export default connect(mapStateToProps)(ListStories);

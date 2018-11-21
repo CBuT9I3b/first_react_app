@@ -18,8 +18,8 @@ ProgressBar.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { selectType, contentByType } = state
-  const { isLoading } = contentByType[selectType] || { isLoading: true}
+  const { selectedType, contentByType } = state
+  const { isLoading } = contentByType[selectedType] || { isLoading: false}
   return { isLoading }
 }
 
