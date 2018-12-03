@@ -1,12 +1,12 @@
 import React from 'react';
 
 const AboutUs = () => (
-  <div className='card border-dark mb-3'>
-    <div className='card-header bg-light'>
+  <div>
+    <div>
       About Us
     </div>
-    <div className='card-body'>
-      <p className='card-text'>About Us</p>
+    <div>
+      <p>About Us</p>
     </div>
   </div>
 );
