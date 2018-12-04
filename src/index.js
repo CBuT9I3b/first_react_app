@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Root } from './containers';
-import 'materialize-css/dist/css/materialize.css';
 import M from 'materialize-css/dist/js/materialize.js';
+
+import 'materialize-css/dist/css/materialize.css';
 import './index.css';
+
+import { Root } from './containers';
 
 render(<Root />, document.getElementById('root'));
 
