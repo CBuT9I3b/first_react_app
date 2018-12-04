@@ -10,6 +10,7 @@ const NavBar = () => (
       <li><NavLink to={`/${TYPE_STORIES.TOP}`}>Top</NavLink></li>
       <li><NavLink to={`/${TYPE_STORIES.BEST}`}>Best</NavLink></li>
     </ul>
+    <div className='navbar-fixed'>
     <nav>
       <div className='nav-wrapper'>
         <ul className='left'>
@@ -21,6 +22,7 @@ const NavBar = () => (
         </ul>
       </div>
     </nav>
+    </div>
   </div>
 );
 
