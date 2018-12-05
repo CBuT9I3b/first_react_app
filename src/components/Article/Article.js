@@ -5,19 +5,17 @@ const Article = props => {
   const link = url ? url.split('/')[2] : 'sorry, no link';
   const date = new Date((time * 1000)).toLocaleString("en-US");
   return (
-    <div>
-        <div>
-          {type} by {by}
-        </div>
-        <div>
-          <h5>{title}</h5>
-          <p>
-            <a href={url}>{link}</a>
-          </p>
-        </div>
-        <div>
+    <div className='col l12 m12 s12'>
+      <div className='card hoverable blue-grey lighten-5'>
+        <div className='card-content'>
+          <span className='card-title'>{title}</span>
+          <p>{type} by {by}</p>
           <small>{date}</small>
         </div>
+        <div className='card-action'>
+          <a href={url}>{link}</a>
+        </div>
+      </div>
     </div>
   )
 };

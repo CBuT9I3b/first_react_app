@@ -8,9 +8,11 @@ const App = () => (
     <ProgressBar />
     <NavBar />
     <div className='container'>
-      <Header />
-      <FormSort />
-      <Routes />
+      {/* <Header /> */}
+      {/* <FormSort /> */}
+      <div className='row'>
+        <Routes />
+      </div>
     </div>
   </div>
 )
