@@ -1,20 +1,20 @@
 import React from 'react';
 
 const Article = props => {
-  const { by, time, title, type, url } = props.data;
-  const link = url ? url.split('/')[2] : 'sorry, no link';
-  const date = new Date((time * 1000)).toLocaleString("en-US");
+  const { by, time, title, type, url } = props.data
+  const titleCard = title ? <span className='card-title'>{title}</span> : null
+  const typeAndAuthor = (type && by) ? <p>{type} by {by}</p> : null
+  const date = time ? <small>{new Date((time * 1000)).toLocaleString("en-US")}</small> : null
+  const link = url ? <div className='card-action'><a href={url}>{url.split('/')[2]}</a></div> : null
   return (
     <div className='col l12 m12 s12'>
       <div className='card hoverable blue-grey lighten-5'>
         <div className='card-content'>
-          <span className='card-title'>{title}</span>
-          <p>{type} by {by}</p>
-          <small>{date}</small>
+          {titleCard}
+          {typeAndAuthor}
+          {date}
         </div>
-        <div className='card-action'>
-          <a href={url}>{link}</a>
-        </div>
+        {link}
       </div>
     </div>
   )
