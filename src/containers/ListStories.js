@@ -8,27 +8,31 @@ import { Article } from '../components';
 class ListStories extends Component {
   componentDidMount() {
     const { dispatch, selectedType, type } = this.props
-    dispatch(selectTypeContent(type))
-    dispatch(getStoriesIfNeeded(selectedType, 10))
+    if (selectedType !== type) {
+      dispatch(selectTypeContent(type))
+    }
+    if (selectedType) {
+      dispatch(getStoriesIfNeeded(selectedType, 10))
+    }
   }
 
   componentDidUpdate(prevProps) {
     const { dispatch, selectedType, type } = this.props;
-    if (selectedType !== prevProps.selectedType) {
-      dispatch(getStoriesIfNeeded(selectedType, 10))
-    }
     if (type !== prevProps.type) {
       dispatch(selectTypeContent(type))
+    }
+    if (selectedType !== prevProps.selectedType) {
+      dispatch(getStoriesIfNeeded(selectedType, 10))
     }
   }
 
   render() {
     const { isLoading, isError, items } = this.props
     if (isLoading) {
-      return <div>Loading...</div>
+      return <Article data={{text: 'Loading...'}} />
     }
     if (isError) {
-      return <div>{isError}</div>
+      return <Article data={{title: "Error", text: isError}} />
     }
     if (items.length !== 0) {
       return items.map(item => <Article data={item} key={item.id} />)

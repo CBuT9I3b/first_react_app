@@ -14,9 +14,11 @@ export const getContentRequest = typeContent => ({
   typeContent
 });
 
-export const getContentError = error => ({
+export const getContentError = (typeContent, error) => ({
   type: GET_CONTENT_ERROR,
-  error
+  typeContent,
+  error,
+  receivedAt: Date.now()
 });
 
 export const getContentSuccess = (typeContent, items) => ({
@@ -54,7 +56,7 @@ function asyncGetStories(typeStories, quantity) {
       dispatch(getContentSuccess(typeStories, stories))
       return stories
     }   catch (error) {
-      dispatch(getContentError(error.message))
+      dispatch(getContentError(typeStories, error.message))
       return error
     }
   }

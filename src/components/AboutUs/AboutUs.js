@@ -1,14 +1,9 @@
 import React from 'react';
 
+import { Article } from '..';
+
 const AboutUs = () => (
-  <div>
-    <div>
-      About Us
-    </div>
-    <div>
-      <p>About Us</p>
-    </div>
-  </div>
+  <Article data={{title: 'About Us', text: 'About Us'}} />
 );
 
 export default AboutUs;
