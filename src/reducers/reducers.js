@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-import { TYPE_STORIES } from '../api';
-
 import {
   GET_CONTENT_REQUEST,
   GET_CONTENT_ERROR,
@@ -9,7 +7,7 @@ import {
   SELECT_TYPE_CONTENT
 } from '../actions';
 
-function selectedType(state = TYPE_STORIES.NEW, action) {
+function selectedType(state = '', action) {
   switch (action.type) {
     case SELECT_TYPE_CONTENT:
       return action.typeContent
