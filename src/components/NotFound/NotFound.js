@@ -1,7 +1,8 @@
 import React from 'react';
+import { Article } from '..';
 
 const NotFound = () => (
-  <div>This Page Not Found</div>
+  <Article data={{title: 'Error', text: 'This Page Not Found'}} />
 )
 
 export default NotFound;
