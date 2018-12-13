@@ -35,7 +35,7 @@ class ListStories extends Component {
       return <Article data={{title: "Error", text: isError}} />
     }
     if (items.length !== 0) {
-      return items.map(item => item ? <Article data={item} key={item.id} /> : null)
+      return items.map(item => <Article data={item} key={item.id} />)
     }
     return null
   }
