@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, FormSort, Routes, NavBar } from '..';
+import { Routes, NavBar } from '..';
 import { ProgressBar } from '../../containers';
 
 const App = () => (
@@ -8,8 +8,6 @@ const App = () => (
     <ProgressBar />
     <NavBar />
     <div className='container'>
-      {/* <Header /> */}
-      {/* <FormSort /> */}
       <div className='row'>
         <Routes />
       </div>
