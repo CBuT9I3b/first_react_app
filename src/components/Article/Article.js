@@ -5,7 +5,7 @@ const Article = props => {
   const titleCard = title ? <span className='card-title'>{title}</span> : null
   const typeAndAuthor = (type && by) ? <p>{type} by {by}</p> : null
   const textCard = text ? <p dangerouslySetInnerHTML={{__html: text}}></p> : null
-  const date = time ? <small>{new Date((time * 1000)).toLocaleString("en-GB")}</small> : null
+  const date = time ? <small>{new Date((time * 1000)).toLocaleString("en-US")}</small> : null
   const link = url ? <div className='card-action'><a href={url}>{url.split('/')[2]}</a></div> : null
   return (
     <div className='col l12 m12 s12'>
