@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { selectTypeContent, getStoriesIfNeeded } from '../actions';
-import { Article } from '../components';
+import { selectTypeContent, getStoriesIfNeeded } from '../actions'
+import { Article } from '../components'
 
 class ListStories extends Component {
   componentDidMount() {
-    const { dispatch, selectedType, type } = this.props
+    const { dispatch, type, selectedType } = this.props
     if (selectedType !== type) {
       dispatch(selectTypeContent(type))
     }
@@ -17,7 +17,7 @@ class ListStories extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { dispatch, selectedType, type } = this.props;
+    const { dispatch, type, selectedType } = this.props;
     if (type !== prevProps.type) {
       dispatch(selectTypeContent(type))
     }
@@ -35,7 +35,7 @@ class ListStories extends Component {
       return <Article data={{title: "Error", text: isError}} />
     }
     if (items.length !== 0) {
-      return items.map(item => <Article data={item} key={item.id} />)
+      return items.map(item => item ? <Article data={item} key={item.id} /> : null)
     }
     return null
   }
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
   return { isLoading, isError, items, selectedType }
 }
 
-export default connect(mapStateToProps)(ListStories);
+export default connect(mapStateToProps)(ListStories)

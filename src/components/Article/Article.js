@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Article = props => {
   const { by, time, title, type, url, text } = props.data
@@ -20,6 +20,6 @@ const Article = props => {
       </div>
     </div>
   )
-};
+}
 
-export default Article;
+export default Article

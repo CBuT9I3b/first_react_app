@@ -1,37 +1,37 @@
-import { HackerNewsApi } from '../api';
+import { HackerNewsApi } from '../api'
 
 // actions type
 
-export const GET_CONTENT_REQUEST = 'GET_CONTENT_REQUEST';
-export const GET_CONTENT_ERROR = 'GET_CONTENT_ERROR';
-export const GET_CONTENT_SUCCESS = 'GET_CONTENT_SUCCESS';
-export const SELECT_TYPE_CONTENT = 'SELECT_TYPE_CONTENT';
+export const GET_CONTENT_REQUEST = 'GET_CONTENT_REQUEST'
+export const GET_CONTENT_ERROR = 'GET_CONTENT_ERROR'
+export const GET_CONTENT_SUCCESS = 'GET_CONTENT_SUCCESS'
+export const SELECT_TYPE_CONTENT = 'SELECT_TYPE_CONTENT'
 
 // actions creators
 
 export const getContentRequest = typeContent => ({
   type: GET_CONTENT_REQUEST,
   typeContent
-});
+})
 
 export const getContentError = (typeContent, error) => ({
   type: GET_CONTENT_ERROR,
   typeContent,
   error,
   receivedAt: Date.now()
-});
+})
 
 export const getContentSuccess = (typeContent, items) => ({
   type: GET_CONTENT_SUCCESS,
   typeContent,
   items,
   receivedAt: Date.now()
-});
+})
 
 export const selectTypeContent = typeContent => ({
   type: SELECT_TYPE_CONTENT,
   typeContent
-});
+})
 
 // thunk functions
 
