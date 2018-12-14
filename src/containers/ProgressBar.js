@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { LinearProgress } from '../components';
+import { LinearProgress } from '../components'
 
 class ProgressBar extends Component {
   render() {
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   return { isLoading }
 }
 
-export default connect(mapStateToProps)(ProgressBar);
+export default connect(mapStateToProps)(ProgressBar)

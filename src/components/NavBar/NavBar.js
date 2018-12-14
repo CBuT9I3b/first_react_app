@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { NavLink } from 'react-router-dom';
-import { TYPE_STORIES } from '../../api';
+import { NavLink } from 'react-router-dom'
+import { TYPE_STORIES } from '../../api'
 
 const NavBar = () => (
   <div>
@@ -41,6 +41,6 @@ const NavBar = () => (
       <li><NavLink to='/about'>About Us</NavLink></li>
     </ul>
   </div>
-);
+)
 
-export default NavBar;
+export default NavBar

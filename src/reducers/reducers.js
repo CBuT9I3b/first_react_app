@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 import {
   GET_CONTENT_REQUEST,
   GET_CONTENT_ERROR,
   GET_CONTENT_SUCCESS,
   SELECT_TYPE_CONTENT
-} from '../actions';
+} from '../actions'
 
 function selectedType(state = '', action) {
   switch (action.type) {
