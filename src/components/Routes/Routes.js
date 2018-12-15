@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { AboutUs, NotFound } from '..'
-import { ListStories } from '../../containers'
+import { ContainerListStories } from '../../containers'
 
 const Routes = () => (
   <Switch>
@@ -16,7 +16,7 @@ const Routes = () => (
 )
 
 const List = ({ match }) => (
-  <ListStories type={match.params.type} />
+  <ContainerListStories type={match.params.type} />
 )
 
 export default Routes

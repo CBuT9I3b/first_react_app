@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Routes, NavBar } from '..'
-import { ProgressBar } from '../../containers'
+import { ContainerHeader } from '../../containers'
 
 const App = () => (
   <div>
-    <ProgressBar />
+    <ContainerHeader />
     <NavBar />
     <div className='container'>
       <div className='row'>
