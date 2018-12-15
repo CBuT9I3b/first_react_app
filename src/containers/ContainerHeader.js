@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { LinearProgress } from '../components'
 
-class ProgressBar extends Component {
+class ContainerHeader extends Component {
   render() {
     const { isLoading } = this.props
     if (isLoading) {
@@ -14,7 +14,7 @@ class ProgressBar extends Component {
   }
 }
 
-ProgressBar.propTypes = {
+ContainerHeader.propTypes = {
   isLoading: PropTypes.bool.isRequired
 }
 
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   return { isLoading }
 }
 
-export default connect(mapStateToProps)(ProgressBar)
+export default connect(mapStateToProps)(ContainerHeader)

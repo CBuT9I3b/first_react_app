@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { selectTypeContent, getStoriesIfNeeded } from '../actions'
 import { Article } from '../components'
 
-class ListStories extends Component {
+class ContainerListStories extends Component {
   componentDidMount() {
     const { dispatch, type, selectedType } = this.props
     if (selectedType !== type) {
@@ -41,7 +41,7 @@ class ListStories extends Component {
   }
 }
 
-ListStories.propTypes = {
+ContainerListStories.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   items: PropTypes.array.isRequired
 }
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
   return { isLoading, isError, items, selectedType }
 }
 
-export default connect(mapStateToProps)(ListStories)
+export default connect(mapStateToProps)(ContainerListStories)
