@@ -3,7 +3,7 @@ import React from 'react'
 import { Article } from '..'
 
 const ListStories = props => {
-  let { isLoading, isError, items } = props.data
+  const { isLoading, isError, items } = props.data
   if (isLoading) {
     return <Article data={{text: 'Loading...'}} />
   }
