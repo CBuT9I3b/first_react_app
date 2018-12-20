@@ -14,6 +14,7 @@ const NavBar = () => (
     <div className='navbar-fixed'>
       <nav>
         <div className='nav-wrapper'>
+          <NavLink to='/' className='brand-logo right'>React News</NavLink>
           <a href='' className='sidenav-trigger' data-target='mobile-nav'>
             <i className='material-icons'>menu</i>
           </a>
